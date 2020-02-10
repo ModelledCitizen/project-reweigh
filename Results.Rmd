@@ -1,0 +1,331 @@
+---
+title: "Exit Poll Reweighting"
+output: 
+    html_document:
+      theme: paper
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(kableExtra)
+if (!exists("exitpoll", inherits = F)) {
+    load("Data/Exit Poll.Rdata")
+} 
+if (!exists("out", inherits = F)) {
+    load("Processed/Result Comparisons.Rdata")
+} 
+if (!exists("tble", inherits = F)) {
+    load("Processed/Output Tables.Rdata")
+} 
+if (!exists("vars", inherits = F)) {
+    vars <-
+    c(
+    "METHOD",
+    "SEX",
+    "AGE4",
+    "ATTEND",
+    "INCOME",
+    "EDUCWHITE",
+    "EDUC3",
+    "RACE4",
+    "CREGION",
+    "SIZEPLAC",
+    "LANGUAGE"
+    )
+}
+```
+
+# {.tabset .tabset-pills}
+
+## 2016 {.tabset}
+```{r 2016 setup, include=FALSE}
+yr2 <- "2016"
+idx <- sapply(vars, function(x)
+    nlevels(exitpoll[[yr2]][[1]][[x]]))
+tbl <- base::cbind(tble[[yr2]][["A"]], tble[[yr2]][["B"]])
+```
+
+### With Candidate Support
+```{r 2016A, out.width="100%"}
+kable(
+    out[[yr2]][["A"]],
+    "html"
+    ) %>%
+    kable_styling(bootstrap_options = c("striped", "hover", "condensed")) %>%
+    add_header_above(
+    c(
+    " " = 1,
+    "National Only, No Imputation" = 6,
+    "National Only, Imputed" = 6,
+    "State & National, Imputed" = 6
+    )
+    ) %>%
+    column_spec(c(2, 8, 14), border_left = T) %>%
+    column_spec(c(3, 5, 7, 9, 11, 13, 15, 17, 19), italic = T) %>%
+    group_rows(index = c(" " = 1, idx))
+```
+
+### Without Candidate Support
+```{r 2016B, out.width="100%"}
+kable(
+    out[[yr2]][["B"]],
+    "html"
+    ) %>%
+    kable_styling(bootstrap_options = c("striped", "hover", "condensed")) %>%
+    add_header_above(
+    c(
+    " " = 1,
+    "National Only, No Imputation" = 6,
+    "National Only, Imputed" = 6,
+    "State & National, Imputed" = 6
+    )
+    ) %>%
+    column_spec(c(2, 8, 14), border_left = T) %>%
+    column_spec(c(3, 5, 7, 9, 11, 13, 15, 17, 19), italic = T) %>%
+    group_rows(index = c(" " = 1, idx))
+```
+
+### Count / Proportion Tables
+```{r 2016C, out.width="100%"}
+kable(tbl,
+      "html") %>%
+      kable_styling(bootstrap_options = c("striped", "hover", "condensed")) %>%
+      add_header_above(
+      c(
+      " " = 1,
+      "1A" = 2,
+      "2A" = 2,
+      "3A" = 2,
+      "1B" = 2,
+      "2B" = 2,
+      "3B" = 2
+      )
+      ) %>%
+      column_spec(c(2, 4, 6, 8, 10, 12), border_left = T) %>%
+      column_spec(c(3, 5, 7, 9, 11, 13), italic = T) %>%
+      group_rows(index = c(" " = 1, "PRES" = 3, idx))
+```
+
+```{r 2016 cleanup, include=FALSE}
+rm(yr2, idx, tbl)
+```
+
+
+## 2012 {.tabset}
+```{r 2012 setup, include=FALSE}
+yr2 <- "2012"
+idx <- sapply(vars, function(x)
+    nlevels(exitpoll[[yr2]][[1]][[x]]))
+tbl <- base::cbind(tble[[yr2]][["A"]], tble[[yr2]][["B"]])
+```
+
+### With Candidate Support
+```{r 2012A, out.width="100%"}
+kable(
+    out[[yr2]][["A"]],
+    "html"
+    ) %>%
+    kable_styling(bootstrap_options = c("striped", "hover", "condensed")) %>%
+    add_header_above(
+    c(
+    " " = 1,
+    "National Only, No Imputation" = 6,
+    "National Only, Imputed" = 6,
+    "State & National, Imputed" = 6
+    )
+    ) %>%
+    column_spec(c(2, 8, 14), border_left = T) %>%
+    column_spec(c(3, 5, 7, 9, 11, 13, 15, 17, 19), italic = T) %>%
+    group_rows(index = c(" " = 1, idx))
+```
+
+### Without Candidate Support
+```{r 2012B, out.width="100%"}
+kable(
+    out[[yr2]][["B"]],
+    "html"
+    ) %>%
+    kable_styling(bootstrap_options = c("striped", "hover", "condensed")) %>%
+    add_header_above(
+    c(
+    " " = 1,
+    "National Only, No Imputation" = 6,
+    "National Only, Imputed" = 6,
+    "State & National, Imputed" = 6
+    )
+    ) %>%
+    column_spec(c(2, 8, 14), border_left = T) %>%
+    column_spec(c(3, 5, 7, 9, 11, 13, 15, 17, 19), italic = T) %>%
+    group_rows(index = c(" " = 1, idx))
+```
+
+### Count / Proportion Tables
+```{r 2012C, out.width="100%"}
+kable(tbl,
+      "html") %>%
+      kable_styling(bootstrap_options = c("striped", "hover", "condensed")) %>%
+      add_header_above(
+      c(
+      " " = 1,
+      "1A" = 2,
+      "2A" = 2,
+      "3A" = 2,
+      "1B" = 2,
+      "2B" = 2,
+      "3B" = 2
+      )
+      ) %>%
+      column_spec(c(2, 4, 6, 8, 10, 12), border_left = T) %>%
+      column_spec(c(3, 5, 7, 9, 11, 13), italic = T) %>%
+      group_rows(index = c(" " = 1, "PRES" = 3, idx))
+```
+
+```{r 2012 cleanup, include=FALSE}
+rm(yr2, idx, tbl)
+```
+
+## 2008 {.tabset}
+```{r 2008 setup, include=FALSE}
+yr2 <- "2008"
+idx <- sapply(vars, function(x)
+    nlevels(exitpoll[[yr2]][[1]][[x]]))
+tbl <- base::cbind(tble[[yr2]][["A"]], tble[[yr2]][["B"]])
+```
+
+### With Candidate Support
+```{r 2008A, out.width="100%"}
+kable(
+    out[[yr2]][["A"]],
+    "html"
+    ) %>%
+    kable_styling(bootstrap_options = c("striped", "hover", "condensed")) %>%
+    add_header_above(
+    c(
+    " " = 1,
+    "National Only, No Imputation" = 6,
+    "National Only, Imputed" = 6,
+    "State & National, Imputed" = 6
+    )
+    ) %>%
+    column_spec(c(2, 8, 14), border_left = T) %>%
+    column_spec(c(3, 5, 7, 9, 11, 13, 15, 17, 19), italic = T) %>%
+    group_rows(index = c(" " = 1, idx))
+```
+
+### Without Candidate Support
+```{r 2008B, out.width="100%"}
+kable(
+    out[[yr2]][["B"]],
+    "html"
+    ) %>%
+    kable_styling(bootstrap_options = c("striped", "hover", "condensed")) %>%
+    add_header_above(
+    c(
+    " " = 1,
+    "National Only, No Imputation" = 6,
+    "National Only, Imputed" = 6,
+    "State & National, Imputed" = 6
+    )
+    ) %>%
+    column_spec(c(2, 8, 14), border_left = T) %>%
+    column_spec(c(3, 5, 7, 9, 11, 13, 15, 17, 19), italic = T) %>%
+    group_rows(index = c(" " = 1, idx))
+```
+
+### Count / Proportion Tables
+```{r 2008C, out.width="100%"}
+kable(tbl,
+      "html") %>%
+      kable_styling(bootstrap_options = c("striped", "hover", "condensed")) %>%
+      add_header_above(
+      c(
+      " " = 1,
+      "1A" = 2,
+      "2A" = 2,
+      "3A" = 2,
+      "1B" = 2,
+      "2B" = 2,
+      "3B" = 2
+      )
+      ) %>%
+      column_spec(c(2, 4, 6, 8, 10, 12), border_left = T) %>%
+      column_spec(c(3, 5, 7, 9, 11, 13), italic = T) %>%
+      group_rows(index = c(" " = 1, "PRES" = 3, idx))
+```
+
+```{r 2008 cleanup, include=FALSE}
+rm(yr2, idx, tbl)
+```
+
+## 2004 {.tabset}
+```{r 2004 setup, include=FALSE}
+yr2 <- "2004"
+idx <- sapply(vars, function(x)
+    nlevels(exitpoll[[yr2]][[1]][[x]]))
+tbl <- base::cbind(tble[[yr2]][["A"]], tble[[yr2]][["B"]])
+```
+
+### With Candidate Support
+```{r 2004A, out.width="100%"}
+kable(
+    out[[yr2]][["A"]],
+    "html"
+    ) %>%
+    kable_styling(bootstrap_options = c("striped", "hover", "condensed")) %>%
+    add_header_above(
+    c(
+    " " = 1,
+    "National Only, No Imputation" = 6,
+    "National Only, Imputed" = 6,
+    "State & National, Imputed" = 6
+    )
+    ) %>%
+    column_spec(c(2, 8, 14), border_left = T) %>%
+    column_spec(c(3, 5, 7, 9, 11, 13, 15, 17, 19), italic = T) %>%
+    group_rows(index = c(" " = 1, idx))
+```
+
+### Without Candidate Support
+```{r 2004B, out.width="100%"}
+kable(
+    out[[yr2]][["B"]],
+    "html"
+    ) %>%
+    kable_styling(bootstrap_options = c("striped", "hover", "condensed")) %>%
+    add_header_above(
+    c(
+    " " = 1,
+    "National Only, No Imputation" = 6,
+    "National Only, Imputed" = 6,
+    "State & National, Imputed" = 6
+    )
+    ) %>%
+    column_spec(c(2, 8, 14), border_left = T) %>%
+    column_spec(c(3, 5, 7, 9, 11, 13, 15, 17, 19), italic = T) %>%
+    group_rows(index = c(" " = 1, idx))
+```
+
+### Count / Proportion Tables
+```{r 2004C, out.width="100%"}
+kable(tbl,
+      "html") %>%
+      kable_styling(bootstrap_options = c("striped", "hover", "condensed")) %>%
+      add_header_above(
+      c(
+      " " = 1,
+      "1A" = 2,
+      "2A" = 2,
+      "3A" = 2,
+      "1B" = 2,
+      "2B" = 2,
+      "3B" = 2
+      )
+      ) %>%
+      column_spec(c(2, 4, 6, 8, 10, 12), border_left = T) %>%
+      column_spec(c(3, 5, 7, 9, 11, 13), italic = T) %>%
+      group_rows(index = c(" " = 1, "PRES" = 3, idx))
+```
+
+```{r 2004 cleanup, include=FALSE}
+rm(yr2, idx, tbl)
+```

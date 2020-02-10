@@ -1,0 +1,68 @@
+\documentclass[12pt]{article}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{longtable}
+
+\geometry{left=1in,right=1in,top=1in,bottom=1in}
+
+\title{Exit Poll Re-Weighting}
+\author{David deLacoste-Azizi}
+\date{}
+
+\begin{document}
+
+\section{Executive Summary}
+We are seeking to re-weight the exit poll to more accurately reflect the demographic composition of the electorate, which has implications for candidate support by population segment. To that end, we use the Current Population Survey in conjunction with official election returns to weight to a total of nine sets of targets in two sets of geographies. We aim to match the exit poll to population proportions of the following:\\
+
+\noindent\textbf{State:}\begin{itemize}
+\item Age 3 (from CPS)
+\item Gender (from CPS)
+\item Early Voting (from CPS)
+\item Size (from Vote Returns)
+\end{itemize}
+\textbf{Region:}\begin{itemize}
+\item Race by Education (from CPS)
+\item Age 8 (from CPS)
+\item County Type (from Vote Returns)
+\item Candidate Support (from Vote Returns)
+\item Size (from Vote Returns)
+\end{itemize}
+
+Attached to this report are tables for each year, which summarize results from the exit poll under three different weighting schemes: the original election night weights, weights under this methodology without targeting candidate support by region, and weights under this methodology including regional candidate support targets. 
+
+\section{Targets in Detail}
+	
+Each set of targets can each be expressed as a \emph{variable} by a \emph{geography}. The two geographies (State and Region) represent different scopes of aggregation for available data. Each level of the variable for each element of the geography creates a cross section of the electorate. The weighting process attempts to match the sample count for each cross section to the population count ("target") for the same cross section.
+
+\textbf{Size} by state and region is implicitly included in the other targets, which combine vote returns with marginal proportions from the CPS.
+
+The \textbf{Gender}, \textbf{Age 3}, and \textbf{Early Voting} variables are tabulated by state. In the exit poll, Gender is recoded from SEX, Age 3 is recoded from AGE3 or AGE9, and Early Voting is recoded from TELEPOLL. Telephone survey respondents are classified as early voters; in-person exit poll respondents are classified as election day voters. Population targets for all three variables are built from a combination of the CPS with official returns (process described below). Gender is recoded from CPS respondent sex (PESEX), Age 3 is recoded from the CPS respondent age (PRTAGE or PEAGE), and Early Voting is recoded from the CPS respondent's answers to questions on vote method and time (PES5 and PES6, or PES4). Any individual voting before election day or by mail is considered an early voter; any individual voting in person and on election day is considered an election day voter.
+
+The \textbf{Race by Education}, \textbf{Age 8}, \textbf{County Type}, and \textbf{Candidate Support} variables are tabulated by region. In the exit poll, Race by Education is the interaction between recoded RACE and EDUC (or EDUCHS and EDUCCOLL) variables, Age 8 is recoded from AGE8 or AGE9, and County Type is determined by identifying the CDC NCHS Urban-Rural classification of the county comprising the majority or plurality of the ZIPCODE of the respondent. Candidate support is recoded from PRES or PRES04. To create population targets, the first two variables rely on the CPS while the latter two rely on election returns alone. Race by Education is again the interaction between a CPS respondent's recoded race (PERACE/PTDTRACE and PRHSPNON/PEHSPNON) and education (PEEDUCA) variables\footnote{Any respondent identifying Black in their list of races was classified as Black, respondents identifying white alone as their race and not identifying as hispanic were classified as white, and respondents identifying as hispanic but not Black were classified as hispanic. All other respondents with non-missing answers were classified as other.}, Age 8 is recoded from the CPS respondent age (PRTAGE or PEAGE), and County Type is determined by identifying the CDC NCHS Urban-Rural classification of each county reporting election returns. Candidate support is taken directly from vote counts reported in the election returns, aggregated up to the region.
+
+
+\section{Population Margin Calculations}
+
+In addition to weighting on the election outcomes (number of democratic, republican, and other votes cast) by region, we considered demographic information at both state and regional geographies.
+
+To generate demographic targets for the population of interest (i.e., participants in the given election), we primarily used the CPS. We also incorporated official election returns from all counties to estimate actual frequencies.
+
+Considering only the universe of CPS respondents who reported voting, we tallied per-geography weighted frequencies for each recoded variable described above. Since the CPS is weighted to represent the complete US population, weighted frequencies are analogous to predicted individual-level counts. Within our universe, a weighted respondent is equivalent to a certain number of voters. The frequency tables, then, estimate the number of voters in a particular cross-section of the electorate; e.g. the number of female voters in Pennsylvania or the number of Black college-educated voters in the West.
+
+The CPS turnout estimates are only an approximation; incorporating real election returns both potentially reduces errors from statistical inference and homogenizes targets when weighting to returns as an additional criterion. To fuse the CPS and official returns, we converted the tabulated frequencies to marginal proportions within the appropriate geography; e.g. the proportion of voters in Pennsylvania who are female or the proportion of voters in the West who are Black and college-educated. These proportions were then multiplied by the true per-geography vote counts -- assigning a proportion of the votes for that geography to each level of the recoded variable, and effectively converting them back to cross-sectional voter counts. The new counts sum to to the final number of votes for each geography. We used these as the target frequencies for the raking algorithm.
+
+
+\section{Variables in Detail}
+
+\begin{description}
+\item [State:] each of the 50 states and the District of Columbia.
+\item [Region:] Northeast, Midwest, South, and West.
+\item [Gender:] Male and Female.
+\item [Age 3:] 18-29, 30-59, and 60+.
+\item [Race by Education:] Combinations of race (White, Black, Hispanic, and Other) and education (High school or less, Some college, College degree).
+\item [Age 8:] 18-24, 25-29, 30-39, 40-44, 45-49, 50-59, 60-64, 65+.
+\item [County Type:] Large Central Metro, Large Fringe Metro, Medium Metro, Small Metro, Micropolitan, Noncore.
+\item [Candidate Support:] Democrat, Republican, Other.
+\end{description}
+
+\end{document}
