@@ -6,7 +6,7 @@ Evaluating a new weighting scheme for the National Election Poll.
 The National Election Poll is a collaborative effort led by major news agencies and conducted by Edison Research. Working under the direction of Prof. Marc Meredith (UPenn PSCI; NBC Decision Desk) with the support of Prof. John Lapinksi (UPenn PSCI & Fox-Fels; Director of Elections Unit, NBC News), I used historical data and national benchmarks to evaluate the performance of a new weighting scheme in matching real election returns. [Read a full description of the project here.](Project Summary/Summary.pdf)
 
 ## Results
-[This set of tables](https://unlikelyvolcano.github.io/project-reweigh/Results.html) allows for a comparison between the unweighted data and the weighted data with or without imputations.
+[This set of tables](https://unlikelyvolcano.github.io/project-reweigh/Results.html) allows for a comparison between the unweighted data and the weighted data with or without imputations. As a result of this project, the NEP is now weighted using education.
 
 ## Notes
 - This was my first major project, and I made a lot of the coding decisions without awareness of best-practices. I hope the code is sufficiently commented to be understandable.
