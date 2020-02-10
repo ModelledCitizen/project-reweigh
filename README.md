@@ -15,4 +15,4 @@ The National Election Poll is a collaborative effort led by major news agencies 
 
 ## Data Access
 - [Public data that is too large for GitHub.](https://upenn.box.com/v/project-reweigh-public)
-- [Request to access exit poll data.](https://upenn.box.com/s/0tno1vuzshtlnemut6wrwqyyrazso236)
+- [Request to access private exit poll data.](https://upenn.box.com/s/0tno1vuzshtlnemut6wrwqyyrazso236)
