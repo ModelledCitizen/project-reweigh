@@ -3,7 +3,7 @@
 Identifying a new weighting scheme for the National Election Pool exit poll.
 
 ## Description
-The National Election Poll is a collaborative effort led by major news agencies and conducted by Edison Research. Working under the direction of Prof. Marc Meredith (UPenn PSCI; NBC Decision Desk) with the support of Prof. John Lapinksi (UPenn PSCI & Fox-Fels; Director of Elections Unit, NBC News), I used historical data and national benchmarks to evaluate the performance of a new weighting scheme in matching real election returns. [Read a full description of the project here.](Project Summary/Summary.pdf)
+The National Election Poll is a collaborative effort led by major news agencies and conducted by Edison Research. Working under the direction of Prof. Marc Meredith (UPenn PSCI; NBC Decision Desk) with the support of Prof. John Lapinksi (UPenn PSCI & Fox-Fels; Director of Elections Unit, NBC News), I used historical data and national benchmarks to evaluate the performance of a new weighting scheme in matching real election returns. [Read a full description of the project here.](https://unlikelyvolcano.github.io/project-reweigh/Project%20Summary/Summary.pdf)
 
 ## Results
 [This set of tables](https://unlikelyvolcano.github.io/project-reweigh/Results.html) allows for a comparison between the unweighted data and the weighted data with or without imputations. As a result of this project, the NEP is now weighted using education.
